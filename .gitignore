@@ -1,0 +1,16 @@
+node_modules
+.env
+.env.**
+coverage
+coverage.json
+typechain
+remappings.txt
+.openzeppelin
+yarn.lock
+package-lock.json
+
+#Hardhat files
+cache
+artifacts/build-info
+
+.DS_Store
