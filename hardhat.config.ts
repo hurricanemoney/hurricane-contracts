@@ -2,8 +2,6 @@ import { HardhatUserConfig, task } from "hardhat/config";
 import '@nomicfoundation/hardhat-toolbox';
 import '@nomicfoundation/hardhat-chai-matchers';
 import '@nomiclabs/hardhat-solhint';
-import { } from "@openzeppelin/hardhat-upgrades";
-import '@openzeppelin/hardhat-upgrades';
 import 'hardhat-change-network';
 import "@nomiclabs/hardhat-etherscan";
 
