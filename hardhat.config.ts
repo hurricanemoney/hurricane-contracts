@@ -117,9 +117,9 @@ const config: HardhatUserConfig = {
             accounts: [String(process.env.MAINNET_PRIVATEKEY)]
         },
 
-        arbitrumGoerli: {
-            url: "https://arbitrum-goerli.public.blastapi.io",
-            chainId: 421613,
+        arbitrumSepolia: {
+            url: "https://public.stackup.sh/api/v1/node/arbitrum-sepolia",
+            chainId: 421614,
             accounts: [String(process.env.MAINNET_PRIVATEKEY)]
         },
         arbitrum: {

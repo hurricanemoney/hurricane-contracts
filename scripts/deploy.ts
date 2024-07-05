@@ -1,8 +1,10 @@
 import * as hardhat from "hardhat";
-import { ethers, upgrades } from "hardhat";
+import { ethers } from "hardhat";
 import { Hurricane } from "../typechain-types/contracts";
 
 async function main() {
+
+  const VERIFY = false;
 
   const [owner] = await ethers.getSigners();
   console.log(`📄 Deploying contracts with the account: ${owner.address}`);
@@ -16,10 +18,12 @@ async function main() {
   console.log(`🔨 Deployed Hurricane at: ${hurricane.address}`);
 
   // Verify Hurricane
-  await hardhat.run("verify:verify", {
-    address: hurricane.address,
-    constructorArguments: []
-  });
+  if (VERIFY) {
+    await hardhat.run("verify:verify", {
+      address: hurricane.address,
+      constructorArguments: []
+    });
+  }
 
   // End
   console.log("✅ Done");
