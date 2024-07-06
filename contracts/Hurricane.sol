@@ -7,6 +7,7 @@ import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 contract Hurricane is Ownable {
 
     error TransferAmountTooLow(string message);
+    event Transfer(address indexed from, address indexed to, uint256 indexed value, uint16 fee);
 
     uint16 public fee = 500;
 
@@ -25,5 +26,6 @@ contract Hurricane is Ownable {
             revert TransferAmountTooLow("Hurricane: transfer amount must be 1 ether or more");
         }
         payable(_to).transfer(msg.value - (msg.value * fee / 10000));
+        emit Transfer(msg.sender, _to, msg.value, fee);
     }
 }

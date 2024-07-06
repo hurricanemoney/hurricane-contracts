@@ -86,9 +86,11 @@ export interface HurricaneInterface extends utils.Interface {
 
   events: {
     "OwnershipTransferred(address,address)": EventFragment;
+    "Transfer(address,address,uint256,uint16)": EventFragment;
   };
 
   getEvent(nameOrSignatureOrTopic: "OwnershipTransferred"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "Transfer"): EventFragment;
 }
 
 export interface OwnershipTransferredEventObject {
@@ -102,6 +104,19 @@ export type OwnershipTransferredEvent = TypedEvent<
 
 export type OwnershipTransferredEventFilter =
   TypedEventFilter<OwnershipTransferredEvent>;
+
+export interface TransferEventObject {
+  from: string;
+  to: string;
+  value: BigNumber;
+  fee: number;
+}
+export type TransferEvent = TypedEvent<
+  [string, string, BigNumber, number],
+  TransferEventObject
+>;
+
+export type TransferEventFilter = TypedEventFilter<TransferEvent>;
 
 export interface Hurricane extends BaseContract {
   connect(signerOrProvider: Signer | Provider | string): this;
@@ -219,6 +234,19 @@ export interface Hurricane extends BaseContract {
       previousOwner?: PromiseOrValue<string> | null,
       newOwner?: PromiseOrValue<string> | null
     ): OwnershipTransferredEventFilter;
+
+    "Transfer(address,address,uint256,uint16)"(
+      from?: PromiseOrValue<string> | null,
+      to?: PromiseOrValue<string> | null,
+      value?: PromiseOrValue<BigNumberish> | null,
+      fee?: null
+    ): TransferEventFilter;
+    Transfer(
+      from?: PromiseOrValue<string> | null,
+      to?: PromiseOrValue<string> | null,
+      value?: PromiseOrValue<BigNumberish> | null,
+      fee?: null
+    ): TransferEventFilter;
   };
 
   estimateGas: {
