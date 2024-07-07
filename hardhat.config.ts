@@ -112,7 +112,7 @@ const config: HardhatUserConfig = {
             accounts: [String(process.env.MAINNET_PRIVATEKEY)]
         },
         bsc: {
-            url: "https://bsc-dataseed.binance.org/",
+            url: "https://binance.llamarpc.com",
             chainId: 56,
             accounts: [String(process.env.MAINNET_PRIVATEKEY)]
         },
